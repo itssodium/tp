@@ -173,6 +173,21 @@ public class AddPatientCommandTest {
         public RoomList getRoomList() {
             return null;
         }
+
+        @Override
+        public void displayFindRoom(Room room) {
+
+        }
+
+        @Override
+        public void displayAllRoom() {
+
+        }
+
+        @Override
+        public ObservableList<Room> getRoomDisplayRoom() {
+            return null;
+        }
     }
 
     /**

@@ -27,7 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final RoomList roomList;
     private final FilteredList<Patient> filteredPatients;
-
+    private Room findRoom;
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
@@ -173,5 +173,17 @@ public class ModelManager implements Model {
 
     public RoomList getRoomList() {
         return roomList;
+    }
+
+    @Override
+    public void displayFindRoom(Room room) {
+        roomList.displayFindRoomUpdate(room);
+    }
+    @Override
+    public void displayAllRoom () {
+        roomList.displayAllRooms();
+    }
+    public ObservableList<Room> getRoomDisplayRoom() {
+        return roomList.getRoomDisplayList();
     }
 }

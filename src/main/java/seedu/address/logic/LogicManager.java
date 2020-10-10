@@ -90,4 +90,9 @@ public class LogicManager implements Logic {
     public ObservableList<Room> getListOfRooms() {
         return model.getRoomList().getRoomObservableList();
     }
+
+    @Override
+    public ObservableList<Room> getRoom() {
+        return model.getRoomDisplayRoom();
+    }
 }

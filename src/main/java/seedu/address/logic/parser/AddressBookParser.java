@@ -18,6 +18,7 @@ import seedu.address.logic.commands.patient.ListPatientCommand;
 import seedu.address.logic.commands.patient.SearchPatientCommand;
 import seedu.address.logic.commands.room.FindRoomCommand;
 import seedu.address.logic.commands.room.InitRoomsCommand;
+import seedu.address.logic.commands.room.ListRoomCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.patient.AddPatientCommandParser;
 import seedu.address.logic.parser.patient.DeletePatientCommandParser;
@@ -86,6 +87,9 @@ public class AddressBookParser {
 
         case InitRoomsCommand.COMMAND_WORD:
             return new InitRoomsParser().parse(arguments);
+
+        case ListRoomCommand.COMMAND_WORD:
+            return new ListRoomCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

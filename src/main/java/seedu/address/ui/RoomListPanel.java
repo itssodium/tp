@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -20,12 +21,14 @@ public class RoomListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(RoomListPanel.class);
 
     private RoomDetailsPanel roomDetailsPanel;
-
+    private Room room;
     @FXML
     private ListView<Room> roomListView;
-
+    //@FXML
+    //private ListView<Room> roomie;
     @FXML
     private AnchorPane roomDetailsPanelPlaceholder;
+    private ObservableList<Room> rooms = FXCollections.observableArrayList();
 
     /**
      * Creates a {@code RoomListPanel} with the given {@code ObservableList}.
@@ -39,6 +42,7 @@ public class RoomListPanel extends UiPart<Region> {
         roomListView.setItems(roomList);
         roomListView.setCellFactory(listView -> new RoomListViewCell());
     }
+
 
     /**
      * Handles mouse click event on the items.
@@ -59,7 +63,6 @@ public class RoomListPanel extends UiPart<Region> {
         @Override
         protected void updateItem(Room room, boolean empty) {
             super.updateItem(room, empty);
-
             if (empty || room == null) {
                 setGraphic(null);
                 setText(null);

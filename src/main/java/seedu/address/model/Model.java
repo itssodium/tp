@@ -102,4 +102,10 @@ public interface Model {
     void addRooms(int num);
 
     RoomList getRoomList();
+
+    void displayFindRoom(Room room);
+
+    void displayAllRoom ();
+
+    ObservableList<Room> getRoomDisplayRoom();
 }
