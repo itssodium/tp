@@ -132,9 +132,9 @@ Examples:
 *  `searchpatient n/john` Searches patients with a name John.
 *  `searchpatient tr/36.5-36.7` Searches patients with temperature 36.5 to 36.7 degree, celsius, both inclusive. 
 
-### 3.5 Add rooms in quarantine facility: `initRooms`
+### 3.6 Add rooms in quarantine facility: `initRooms`
 
-### 3.6 Add rooms in quarantine facility: `addRooms`
+### 3.7 Add rooms in quarantine facility: `addRooms`
 
 Initializes the number of rooms in the quarantine facility to the app, if there was data given previously, they would 
 be stored.
@@ -147,7 +147,7 @@ Examples:
 * `initRooms 123`
 * `initRooms 400`
 
-### 3.7 Find the first free room: `findRoom`
+### 3.8 Find the first free room: `findRoom`
 
 Finds the room with the lowest room number that is free for use.
 
@@ -155,13 +155,18 @@ Format: `findRoom`
 
 * Finds the room number of least value that can be safely used for accommodation
 
-### 3.8 View help: `help`
+### 3.9 Lists the current rooms: `listRoom`
+
+Lists all the current available rooms.
+
+Format: `listRoom`
+### 3.9 View help: `help`
 
 Shows a message explaining how to access the help page.
 
 Format: `help`
 
-### 3.9 Save the data
+### 3.10 Save the data
 
 Covigent data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
@@ -183,5 +188,6 @@ Action | Format, Examples
 **Initialize Rooms** | `initRooms NUMBER_OF_ROOMS` <br> e.g., `addRooms 123`
 **Search Patient** | `searchpatient [n/NAME] [tr/TEMPERATURE_RANGE]` <br> e.g., `searchpatient tr/36.5-36.7`
 **Find Room** | `findRoom` <br> 
+**List Room** | `listRoom` <br> 
 **Help** | `help`<br>
 
