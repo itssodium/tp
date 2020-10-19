@@ -33,6 +33,8 @@
 .tab-pane {
     -fx-alignment: CENTER;
     -fx-padding: 0 0 0 0
+    -fx-padding: 0 0 0 1;
+    -fx-background-color:  #2b5c7bff;
 }
 
 .tab-pane .tab-header-area {
@@ -369,4 +371,3 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
-
