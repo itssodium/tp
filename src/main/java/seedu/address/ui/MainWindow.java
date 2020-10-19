@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -39,7 +41,6 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PatientListPanel patientListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
     private RoomListPanel roomListPanel;
 
     @FXML
@@ -47,9 +48,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane commandBoxPlaceholder;
-
-    @FXML
-    private MenuItem helpMenuItem;
 
     @FXML
     private StackPane patientListPanelPlaceholder;
@@ -75,6 +73,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane roomListPanelPlaceHolder;
 
+    private Image patientImage = new Image(this.getClass().getResourceAsStream("/images/patient.png"));
+    private Image roomImage = new Image(this.getClass().getResourceAsStream("/images/room.png"));
+    private Image taskImage = new Image(this.getClass().getResourceAsStream("/images/tasks.png"));
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -85,24 +86,29 @@ public class MainWindow extends UiPart<Stage> {
         this.primaryStage = primaryStage;
         this.logic = logic;
 
+        //set images to the three different tabs
+        this.setTabImage(patientTab, patientImage);
+        this.setTabImage(roomTab, roomImage);
+        this.setTabImage(taskTab, taskImage);
+
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
-        setAccelerators();
-
-        helpWindow = new HelpWindow();
     }
 
+    private void setTabImage(Tab tab, Image image) {
+        ImageView imageView = new ImageView();
+        imageView.setFitHeight(90);
+        imageView.setFitWidth(90);
+        imageView.setImage(image);
+        tab.setGraphic(imageView);
+    }
     public void displayAppIcon() {
         logoIcon.setImage(logoPicture);
     }
 
     public Stage getPrimaryStage() {
         return primaryStage;
-    }
-
-    private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
     }
 
     /**
@@ -167,18 +173,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Opens the help window or focuses on it if it's already opened.
-     */
-    @FXML
-    public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
-    }
-
     void show() {
         primaryStage.show();
     }
@@ -191,7 +185,6 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
         primaryStage.hide();
     }
 
@@ -209,10 +202,6 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-
-            if (commandResult.isShowHelp()) {
-                handleHelp();
-            }
 
             if (commandResult.isExit()) {
                 handleExit();

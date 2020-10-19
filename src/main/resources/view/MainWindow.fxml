@@ -36,26 +36,16 @@
                      </HBox.margin></ImageView>
           </children>
         </HBox>
-
-        <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
-          <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
-          </Menu>
-        </MenuBar>
-
-        <TabPane fx:id="patientRoomTabs" tabClosingPolicy="UNAVAILABLE">
+        <TabPane fx:id="patientRoomTabs" tabClosingPolicy="UNAVAILABLE" rotateGraphic="true" side = "LEFT" prefHeight="320">
           <tabs>
-            <Tab fx:id="patientTab" text="Patients">
+            <Tab fx:id="patientTab" >
               <content>
                 <StackPane fx:id="patientListPanelPlaceholder" VBox.vgrow="ALWAYS" />
               </content>
             </Tab>
             <Tab fx:id="roomTab" text="Rooms">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane >
                  <children>
                     <StackPane fx:id="roomListPanelPlaceHolder" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                  </children>

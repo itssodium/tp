@@ -31,20 +31,18 @@
 
 
 .tab-pane {
-    -fx-padding: 0 0 0 1;
-    -fx-background-color:  #AED6F1;
+    -fx-alignment: CENTER;
+    -fx-padding: 0 0 0 0
 }
 
 .tab-pane .tab-header-area {
-    -fx-background-color:  #AED6F1;
-    -fx-padding: 1 1 1 1;
-    -fx-min-height: 0;
-    -fx-max-height: 0;
+    -fx-alignment: CENTER;
+     -fx-padding: 0 0 0 0
 }
 
 .tab {
     -fx-pref-width: 100;
-    -fx-pref-height: 45;
+    -fx-pref-height: 100;
 }
 
 .tab .tab-label {
@@ -152,6 +150,7 @@
 }
 
 .stack-pane {
+
      -fx-background-color: derive(#1d1d1d, 20%);
 }
 
@@ -200,6 +199,7 @@
 }
 
 .grid-pane .stack-pane {
+    -fx-alignment: CENTER_LEFT;
     -fx-background-color: derive(#1d1d1d, 30%);
 }
 
