@@ -39,7 +39,10 @@ public class MainWindow extends UiPart<Stage> {
     private Stage primaryStage;
     private Logic logic;
 
-    private Image logoPicture = new Image(this.getClass().getResourceAsStream("/images/covigent_logo.png"));
+    private Image logoPicture = new Image(this.getClass().getResourceAsStream("/images/Logo.png"));
+    private Image patientImage = new Image(this.getClass().getResourceAsStream("/images/patient.png"));
+    private Image roomImage = new Image(this.getClass().getResourceAsStream("/images/room.png"));
+    private Image taskImage = new Image(this.getClass().getResourceAsStream("/images/tasks.png"));
 
     // Independent Ui parts residing in this Ui container
     private PatientListPanel patientListPanel;
@@ -76,9 +79,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane roomListPanelPlaceHolder;
 
-    private Image patientImage = new Image(this.getClass().getResourceAsStream("/images/patient.png"));
-    private Image roomImage = new Image(this.getClass().getResourceAsStream("/images/room.png"));
-    private Image taskImage = new Image(this.getClass().getResourceAsStream("/images/tasks.png"));
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -101,14 +102,10 @@ public class MainWindow extends UiPart<Stage> {
 
     private void setTabImage(Tab tab, Image image) {
         ImageView imageView = new ImageView();
-        imageView.setFitHeight(50);
-        imageView.setFitWidth(50);
-        //imageView.setImage(image);
-        Label label = new Label("hello");
-        //label.setRotate(180);
-        //label.setGraphic(imageView);
-        //label.setTextAlignment(TextAlignment.LEFT);
-        tab.setGraphic(label);
+        imageView.setFitHeight(90);
+        imageView.setFitWidth(90);
+        imageView.setImage(image);
+        tab.setGraphic(imageView);
 
     }
     public void displayAppIcon() {
