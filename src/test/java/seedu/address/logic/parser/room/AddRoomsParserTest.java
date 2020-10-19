@@ -2,20 +2,20 @@ package seedu.address.logic.parser.room;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.NUMBER_OF_ROOMS_GIVEN_IN_DIGITS;
-import static seedu.address.logic.commands.room.InitRoomCommand.MESSAGE_USAGE;
+import static seedu.address.logic.commands.room.InitRoomsCommand.MESSAGE_USAGE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.room.InitRoomCommand;
+import seedu.address.logic.commands.room.InitRoomsCommand;
 
 class AddRoomsParserTest {
-    private InitRoomCommandParser parser = new InitRoomCommandParser();
+    private InitRoomsCommandParser parser = new InitRoomsCommandParser();
     @Test
     void parse() {
         String input = "123";
-        assertParseSuccess(parser, input, new InitRoomCommand(123));
+        assertParseSuccess(parser, input, new InitRoomsCommand(123));
     }
 
     @Test
