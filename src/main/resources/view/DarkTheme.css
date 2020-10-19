@@ -33,7 +33,6 @@
 .tab-pane {
     -fx-alignment: CENTER;
     -fx-padding: 0 0 0 0
-    -fx-padding: 0 0 0 0;
     -fx-background-color:  #2b5c7bff;
 }
 
@@ -43,12 +42,14 @@
 }
 
 .tab {
+    -fx-rotate: 90;
     -fx-pref-width: 100;
     -fx-pref-height: 100;
 }
 
-.tab .tab-label {
-    -fx-font-size: 15px;
+.tab .graphic {
+    -fx-alignment: CENTER_RIGHT;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-font-family: "American Typewriter";
 }

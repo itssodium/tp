@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -15,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -98,10 +101,15 @@ public class MainWindow extends UiPart<Stage> {
 
     private void setTabImage(Tab tab, Image image) {
         ImageView imageView = new ImageView();
-        imageView.setFitHeight(90);
-        imageView.setFitWidth(90);
-        imageView.setImage(image);
-        tab.setGraphic(imageView);
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+        //imageView.setImage(image);
+        Label label = new Label("hello");
+        //label.setRotate(180);
+        //label.setGraphic(imageView);
+        //label.setTextAlignment(TextAlignment.LEFT);
+        tab.setGraphic(label);
+
     }
     public void displayAppIcon() {
         logoIcon.setImage(logoPicture);

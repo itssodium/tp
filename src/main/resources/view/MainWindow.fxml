@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.stage.*?>
 
-<fx:root minHeight="600" minWidth="500.0" onCloseRequest="#handleExit" title="Covigent" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="800" minWidth="800" onCloseRequest="#handleExit" title="Covigent" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -36,7 +36,7 @@
                 <StackPane fx:id="patientListPanelPlaceholder" VBox.vgrow="ALWAYS" />
               </content>
             </Tab>
-            <Tab fx:id="roomTab" text="Rooms">
+            <Tab fx:id="roomTab" >
               <content>
                 <AnchorPane >
                  <children>
@@ -45,7 +45,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="taskTab" text="Tasks">
+            <Tab fx:id="taskTab">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
