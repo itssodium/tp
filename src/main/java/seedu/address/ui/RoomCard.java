@@ -4,8 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import seedu.address.model.room.Room;
 
 /**
@@ -40,7 +43,13 @@ public class RoomCard extends UiPart<Region> {
     public RoomCard(Room room) {
         super(FXML);
         this.room = room;
+        if (room.getRoomNumber() % 2 == 1) {
+            cardPane.setStyle("-fx-background-color: #fff2ccff;");
+        } else {
+            cardPane.setStyle("-fx-background-color: #fff1f1ff;");
+        }
         roomNumber.setText(String.format("Room #%d", room.getRoomNumber()));
+
         if (room.isOccupied()) {
             showOccupancy.setImage(occupied);
         } else {
