@@ -13,7 +13,7 @@ public class Temperature {
             "Temperature should only contain numbers, and it should be to one decimal place. (E.g. 36.0)";
     public static final String VALIDATION_REGEX = "\\d\\d[.]\\d";
     public final double value;
-
+    private final TEMP temp;
     /**
      * Constructs a {@code Temperature}.
      * @param temperature A valid temperature.
@@ -22,6 +22,7 @@ public class Temperature {
         requireNonNull(temperature);
         checkArgument(isValidTemperature(temperature), MESSAGE_CONSTRAINTS); //ensures temp is always to 1 d.p.
         value = Double.parseDouble(temperature);
+        temp = categoriseTemperature();
     }
 
     /**
@@ -39,6 +40,23 @@ public class Temperature {
         return test.matches(VALIDATION_REGEX);
     }
 
+    private TEMP categoriseTemperature() {
+        if (value <= 35.5) {
+            return TEMP.VERY_LOW;
+        } else if (value > 35.5 && value < 36.0) {
+            return TEMP.LOW;
+        } else if (value >= 36.0 && value <= 37.8) {
+            return TEMP.NORMAL;
+        } else if (value > 37.8 && value < 38.5){
+            return TEMP.HIGH;
+        } else {
+            return TEMP.VERY_HIGH;
+        }
+    }
+
+    public TEMP getTemp() {
+        return temp;
+    }
     @Override
     public String toString() {
         return Double.toString(value);

@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private Image roomImage = new Image(this.getClass().getResourceAsStream("/images/room.png"));
     private Image taskImage = new Image(this.getClass().getResourceAsStream("/images/task.png"));
     // Independent Ui parts residing in this Ui container
+    private IntroWindowPanel introWindowPanel;
     private PatientListPanel patientListPanel;
     private ResultDisplay resultDisplay;
     private RoomListPanel roomListPanel;
@@ -68,10 +69,13 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane roomListPanelPlaceHolder;
 
+    @FXML
+    private StackPane introPanelPlaceHolder;
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MainWindow(Stage primaryStage, Logic logic) {
+
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -109,6 +113,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        introWindowPanel = new IntroWindowPanel(logic.getFilteredPatientList(), logic.getFilteredRoomList());
+        introPanelPlaceHolder.getChildren().add(introWindowPanel.getRoot());
+
         patientListPanel = new PatientListPanel(logic.getFilteredPatientList());
         patientListPanelPlaceholder.getChildren().add(patientListPanel.getRoot());
 

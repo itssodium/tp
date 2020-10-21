@@ -43,6 +43,10 @@ public class Patient {
         return temperature;
     }
 
+    public TEMP getTempCategorisation() {
+        return temperature.getTemp();
+    }
+
     public PeriodOfStay getPeriodOfStay() {
         return periodOfStay;
     }
