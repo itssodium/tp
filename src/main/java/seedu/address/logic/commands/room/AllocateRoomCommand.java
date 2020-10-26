@@ -93,7 +93,7 @@ public class AllocateRoomCommand extends Command {
         TaskList roomTaskList = roomToAllocate.getTaskList();
         boolean isClearRoom = allocateRoomDescriptor.getIsOccupied().isPresent();
         if (isClearRoom) {
-            return new Room(roomNumber, false, null, roomTaskList);
+            return new Room(roomNumber, false, Optional.empty(), roomTaskList);
         }
         Name patientName = allocateRoomDescriptor.getPatientName().get(); //definitely has name
         if (model.isPatientAssignedToRoom(patientName)) {
