@@ -11,7 +11,7 @@ import seedu.address.model.room.Room;
 
 class RoomListTest {
 
-    @Test
+    /*@Test
     void testEquals() {
         PriorityQueue<Room> rooms = new PriorityQueue<>();
         Room[] arrayOfRooms = new Room[10];
@@ -37,7 +37,7 @@ class RoomListTest {
         roomList2.setNumOfRooms(100);
         //different number of rooms -> returns false
         assertFalse(roomList1.equals(roomList2));
-    }
+    }*/
 
     @Test
     void testPriorityQueueEquals() {

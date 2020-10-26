@@ -97,7 +97,6 @@ public class MainWindow extends UiPart<Stage> {
         imageView.setFitWidth(90);
         imageView.setImage(image);
         tab.setGraphic(imageView);
-
     }
 
     public void displayAppIcon() {

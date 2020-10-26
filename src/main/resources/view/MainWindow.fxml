@@ -40,12 +40,12 @@
 
         <TabPane fx:id="covigentTabs" styleClass="main-tab-pane" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE">
           <tabs>
-            <Tab fx:id="patientTab" styleClass="main-tab" text="Patients">
+            <Tab fx:id="patientTab" styleClass="main-tab">
               <content>
                 <StackPane fx:id="patientListPanelPlaceholder" VBox.vgrow="ALWAYS" />
               </content>
             </Tab>
-            <Tab fx:id="roomTab" styleClass="main-tab" text="Rooms">
+            <Tab fx:id="roomTab" styleClass="main-tab">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                  <children>
@@ -54,7 +54,7 @@
                 </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="taskTab" styleClass="main-tab" text="Tasks">
+            <Tab fx:id="taskTab" styleClass="main-tab" >
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>

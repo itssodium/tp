@@ -103,10 +103,10 @@ public class EditRoomCommand extends Command {
         boolean isCurrentlyOccupied = roomToEdit.isOccupied();
         if (!isClearRoom && !hasNewPatient && isCurrentlyOccupied) {
             //case 1: change room number in a room with patient already
-            return new Room(updatedRoomNumber, roomToEdit.getPatient(), roomTaskList);
+            return new Room(updatedRoomNumber, Optional.of(roomToEdit.getPatient()), roomTaskList);
         } else if (!hasNewPatient) {
             //case 2: change room number in an empty room
-            return new Room(updatedRoomNumber, false, null, roomTaskList);
+            return new Room(updatedRoomNumber, false, Optional.empty(), roomTaskList);
         }
         //case 3: patient is already allocated to a room.
         Name patientName = editRoomDescriptor.getPatientName().get(); //definitely has name
@@ -118,7 +118,7 @@ public class EditRoomCommand extends Command {
         if (updatedPatient.isEmpty()) {
             throw new CommandException(MESSAGE_INVALID_PATIENT_NAME_INPUT);
         } else {
-            Room updatedRoom = new Room(updatedRoomNumber, updatedPatient.get(), roomTaskList);
+            Room updatedRoom = new Room(updatedRoomNumber, updatedPatient, roomTaskList);
             return updatedRoom;
         }
     }
