@@ -116,6 +116,9 @@ public class UniqueRoomList implements Iterable<Room> {
         }
     }
 
+    /**
+     * Gives list of empty rooms in the region which exists after shrinkage.
+     */
     public List<Room> unOccupiedRooms() {
         List<Room> rooms = new ArrayList<>();
         for (int i = 0; i < numOfRooms; i++) {
@@ -126,6 +129,9 @@ public class UniqueRoomList implements Iterable<Room> {
         return rooms;
     }
 
+    /**
+     * Gives list of occupied rooms in the region which does not exist after shrinkage.
+     */
     public List<Room> occupiedRooms() {
         List<Room> rooms = new ArrayList<>();
         for (int i = numOfRooms; i < internalList.size(); i++) {

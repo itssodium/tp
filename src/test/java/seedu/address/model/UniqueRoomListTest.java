@@ -1,16 +1,20 @@
 package seedu.address.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.IntStream;
-import org.junit.jupiter.api.Test;
-import seedu.address.model.room.Room;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalRooms.ROOM_PATIENT_ALICE_NO_TASK;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.room.Room;
+
+
 
 class UniqueRoomListTest {
 
@@ -39,7 +43,7 @@ class UniqueRoomListTest {
     }
 
     @Test
-    public void addRooms_multipleInputs_numOfRooms_returnsTrue() {
+    public void addRoom_returnTrue() {
         uniqueRoomList.addRooms(5);
         assertEquals(uniqueRoomList.getNumOfRooms(), 5);
         uniqueRoomList.addRooms(3);
@@ -49,7 +53,7 @@ class UniqueRoomListTest {
     }
 
     @Test
-    public void addRooms_multipleInputs_numOfRooms_occupiedRooms_returnsTrue() {
+    public void test_multipleAddRoom_returnTrue() {
         uniqueRoomList.addRooms(ROOM_PATIENT_ALICE_NO_TASK);
         uniqueRoomList.addRooms(5);
         assertEquals(uniqueRoomList.getNumOfRooms(), 5);
@@ -60,7 +64,7 @@ class UniqueRoomListTest {
     }
 
     @Test
-    public void addRooms_multipleInputs_occupiedRooms_previousInformation_returnsTrue() {
+    public void test_roomOccupied_returnTrue() {
         uniqueRoomList.addRooms(ROOM_PATIENT_ALICE_NO_TASK);
         uniqueRoomList.addRooms(5);
         assertTrue(uniqueRoomList.containsRoom(ROOM_PATIENT_ALICE_NO_TASK));
@@ -85,9 +89,8 @@ class UniqueRoomListTest {
     public void addRooms_listOfOccupiedRooms_returnsTrue() {
         List<Room> expectedOccupiedRooms = new ArrayList<>();
         uniqueRoomList.addRooms(10);
-        IntStream.iterate(1, x -> x <= 10, x -> x + 2).forEach(x ->
-        {
-            if(x >= 5) {
+        IntStream.iterate(1, x -> x <= 10, x -> x + 2).forEach(x -> {
+            if (x >= 5) {
                 expectedOccupiedRooms.add(new Room(x, true));
             }
             uniqueRoomList.getRoomObservableList().get(x - 1).setOccupied(true);
@@ -102,9 +105,8 @@ class UniqueRoomListTest {
     public void addRooms_listOfUnoccupiedRooms_returnsTrue() {
         List<Room> expectedUnoccupiedRooms = new ArrayList<>();
         uniqueRoomList.addRooms(10);
-        IntStream.iterate(1, x -> x <= 10, x -> x + 2).forEach(x ->
-        {
-            if(x < 4) {
+        IntStream.iterate(1, x -> x <= 10, x -> x + 2).forEach(x -> {
+            if (x < 4) {
                 expectedUnoccupiedRooms.add(new Room(x + 1));
             }
             uniqueRoomList.getRoomObservableList().get(x - 1).setOccupied(true);
