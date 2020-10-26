@@ -312,4 +312,5 @@ public class UniqueRoomList implements Iterable<Room> {
         }
         return Optional.empty();
     }
+
 }

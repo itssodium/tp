@@ -104,6 +104,7 @@ public class AllocateRoomCommand extends Command {
             throw new CommandException(MESSAGE_INVALID_PATIENT_NAME);
         } else {
             Room updatedRoom = new Room(roomNumber, updatedPatient, roomTaskList);
+
             return updatedRoom;
         }
     }

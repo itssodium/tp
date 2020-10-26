@@ -46,6 +46,7 @@ public class AllocateRoomCommandParser implements Parser<AllocateRoomCommand> {
         AllocateRoomCommand.AllocateRoomDescriptor
                 allocateRoomDescriptor = new AllocateRoomCommand.AllocateRoomDescriptor();
 
+
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             String patientFieldInput = argMultimap.getValue(PREFIX_NAME).get();
             if (patientFieldInput.equals(INPUT_REMOVE_PATIENT)) {
@@ -62,3 +63,4 @@ public class AllocateRoomCommandParser implements Parser<AllocateRoomCommand> {
         return new AllocateRoomCommand(roomToBeAllocated, allocateRoomDescriptor);
     }
 }
+

@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.PriorityQueue;
@@ -16,6 +17,7 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.patient.Name;
 import seedu.address.model.patient.UniquePatientList;
 import seedu.address.model.room.Room;
@@ -103,6 +105,34 @@ public class RoomList implements ReadOnlyRoomList {
     }
 
     /**
+     * Returns the room with the provided {@code roomNumber}.
+     * An empty optional is returned if such a room is not found in the {@code RoomList}.
+     *
+     * @param roomNumber The room number of the room.
+     * @return the optional-wrapped room if found, otherwise an empty optional
+     */
+    public Optional<Room> getRoomWithRoomNumber(int roomNumber) {
+        return rooms.getRoomWithRoomNumber(roomNumber);
+    }
+
+    // TODO: Move task-related methods into another class
+
+    /**
+     * Returns the task with the provided {@code taskIndex} from {@code room}.
+     * An empty optional is returned if such a task is not found in the room.
+     *
+     * @param taskIndex The index of the task in the room.
+     * @return the optional-wrapped task if found, otherwise an empty optional
+     */
+    public Optional<Task> getTaskFromRoomWithTaskIndex(Index taskIndex, Room room) {
+        List<Task> tasks = room.getTaskList().asUnmodifiableObservableList();
+        if (taskIndex.getZeroBased() >= tasks.size()) {
+            return Optional.empty();
+        }
+        return Optional.of(tasks.get(taskIndex.getZeroBased()));
+    }
+
+    /**
      * Adds a task to a room.
      * The room must exist in the {@code RoomList}.
      *
@@ -132,6 +162,17 @@ public class RoomList implements ReadOnlyRoomList {
         rooms.deleteTaskFromRoom(task, room);
     }
 
+    /**
+     * Replaces a task {code target} in a room with {@code editedTask}.
+     * The room must exist in the {@code RoomList}.
+     * The {@code target} must exist in the {@code TaskList} of the room.
+     *
+     * @param target The task to be replaced.
+     * @param editedTask The edited task to replace the target.
+     * @param room The room in which the task should be replaced.
+     * @throws RoomNotFoundException if {@code room} is not in {@code RoomList}.
+     * @throws TaskNotFoundException if {@code target} is not in {@code room}.
+     */
     public void setTaskToRoom(Task target, Task editedTask, Room room) {
         requireAllNonNull(target, editedTask, room);
 
@@ -153,23 +194,6 @@ public class RoomList implements ReadOnlyRoomList {
     }
 
     /**
-     * Tests whether 2 PriorityQueues are equal by checking whether at each relative position they contain the equal
-     * rooms
-     */
-    public boolean equals(PriorityQueue<Room> rooms1, PriorityQueue<Room> rooms2) {
-        if (rooms1.size() != rooms2.size()) {
-            return false;
-        } else {
-            int size = rooms1.size();
-            for (int i = 0; i < size; i++) {
-                if (!rooms1.poll().equals(rooms2.poll())) {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-    /**
      * Returns true if the list contains an equivalent room as the given argument.
      */
     public boolean containsRoom(Room toCheck) {
@@ -177,14 +201,16 @@ public class RoomList implements ReadOnlyRoomList {
         return rooms.containsRoom(toCheck);
     }
 
+    //@@author chiamyunqing
     /**
-     * Clears the room which contains the patient with the given name.
-     * @param patientName to clear the room from.
+     * Removes the patient with the given name {@code patientName} from the room.
      */
-    public void clearRoom(Name patientName) {
+    public void removePatientFromRoom(Name patientName) {
         requireNonNull(patientName);
+
         rooms.clearRoom(patientName);
     }
+    //@@author chiamyunqing
 
     /**
      * Replaces the room {@code target} in the list with {@code editedRoom}.
@@ -197,6 +223,7 @@ public class RoomList implements ReadOnlyRoomList {
     public void setSingleRoom(Room target, Room editedRoom) {
         rooms.setSingleRoom(target, editedRoom);
     }
+
     @Override
     public int hashCode() {
         return rooms.hashCode();
@@ -210,7 +237,5 @@ public class RoomList implements ReadOnlyRoomList {
         this.rooms.setRooms(rooms);
     }
 
-    public Optional<Room> getRoomWithRoomNumber(int roomNumber) {
-        return rooms.getRoomWithRoomNumber(roomNumber);
-    }
 }
+
