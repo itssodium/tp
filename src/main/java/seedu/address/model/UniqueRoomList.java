@@ -29,15 +29,7 @@ public class UniqueRoomList implements Iterable<Room> {
     private ObservableList<Room> internalList = FXCollections.observableArrayList();
     private final ObservableList<Room> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
-    private class Pair {
-        Room first;
-        Room second;
 
-        Pair(Room first, Room second) {
-            this.first = first;
-            this.second = second;
-        }
-    }
     @Override
     public Iterator<Room> iterator() {
         return internalList.iterator();
@@ -83,7 +75,10 @@ public class UniqueRoomList implements Iterable<Room> {
         } else if (numOfRooms < internalList.size()) {
             List<Room> occupiedRooms = occupiedRooms();
             List<Room> unoccupiedRooms = unOccupiedRooms();
-            combinedStream(occupiedRooms, unoccupiedRooms);
+            if(occupiedRooms.size() == 0){}
+            else {
+                combinedStream(occupiedRooms, unoccupiedRooms);
+            }
             rooms = new PriorityQueue<>(new ComparableRoom());
             for (int i = 0; i < numOfRooms; i++) {
                 Room room = internalList.get(i);
@@ -95,7 +90,6 @@ public class UniqueRoomList implements Iterable<Room> {
                 internalList.remove(numOfRooms);
             }
         }
-         // to let the UI update
     }
 
     private List<Room> unOccupiedRooms() {
@@ -118,12 +112,6 @@ public class UniqueRoomList implements Iterable<Room> {
         return rooms;
     }
 
-    public boolean containsPatientInExcessRoom() {
-        Stream<Room> roomStream = IntStream.rangeClosed(numOfRooms, internalList.size())
-                .mapToObj(x -> internalList.get(x));
-        return roomStream.reduce(false, (x, y) -> y.isOccupied(), (x, y) -> x || y);
-    }
-
     private void combinedStream(List<Room> occupiedRooms, List<Room> unoccupiedRooms) {
         for (Room room : occupiedRooms) {
              Room empty = unoccupiedRooms.get(0);
@@ -134,14 +122,18 @@ public class UniqueRoomList implements Iterable<Room> {
         }
     }
 
-    public IntStream unoccupiedRooms() {
-        return IntStream.rangeClosed(0, numOfRooms - 1).filter(index -> !internalList.get(index).isOccupied());
+    public boolean canFit() {
+        return numOfOccupiedRooms() <= numOfEmptyRooms();
     }
 
-    public boolean hasEmptyRooms() {
-        Stream<Room> roomStream = IntStream.rangeClosed(0, numOfRooms).
-                mapToObj(x -> internalList.get(x));
-        return roomStream.reduce(false, (x, y) -> !y.isOccupied(), (x, y) -> x || y);
+    public int numOfOccupiedRooms() {
+        return (int) IntStream.rangeClosed(numOfRooms, internalList.size() - 1).
+                mapToObj(x -> internalList.get(x)).filter(Room::isOccupied).count();
+    }
+
+    private int numOfEmptyRooms() {
+       return (int) IntStream.rangeClosed(0, numOfRooms - 1).
+                mapToObj(x -> internalList.get(x)).filter(room -> !room.isOccupied()).count();
     }
     /**
      * Adds the number of the rooms in a hotel

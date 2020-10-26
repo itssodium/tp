@@ -54,50 +54,17 @@ public class RoomList implements ReadOnlyRoomList {
         resetData(readOnlyRoomList);
     }
 
-    public boolean containsPatientInExcessRoom() {
-        return rooms.containsPatientInExcessRoom();
+    public boolean canFit() {
+        return rooms.canFit();
     }
 
-    public boolean hasEmptyRooms() {
-        return rooms.hasEmptyRooms();
+    public int numOfOccupiedRooms() {
+        return rooms.numOfOccupiedRooms();
     }
-
-    /*private int numOfRooms;
-    private PriorityQueue<Room> rooms = new PriorityQueue<>();
-    private ObservableList<Room> internalList = FXCollections.observableArrayList();
-    private final ObservableList<Room> internalUnmodifiableList =
-            FXCollections.unmodifiableObservableList(internalList);*/
-
-    public static class Pair {
-        int first;
-        int second;
-
-        Pair(int first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-    }
-    /** Creates default RoomList() object where all fields are null**/
-   // public RoomList() {}
-
-
-    /**
-     * Creates a RoomList object using the information given in files containing information about
-     * which rooms are occupied and number of rooms
-     */
-    /*public RoomList(PriorityQueue<Room> rooms, int numOfRooms) {
-        this.rooms = rooms;
-        this.numOfRooms = numOfRooms;
-    }*/
-
     /**
      * Resets the existing data of this {@code RoomList} with {@code newData}.
      */
     public void resetData(ReadOnlyRoomList readOnlyRoomList) {
-        /*ObservableList<Room> roomLists = readOnlyRoomList.getRoomObservableList();
-        numOfRooms = roomLists.size();
-        rooms.addAll(roomLists);
-        internalList.addAll(roomLists);*/
         rooms.resetData(readOnlyRoomList);
     }
     /**
@@ -116,10 +83,6 @@ public class RoomList implements ReadOnlyRoomList {
 
     public ObservableList<Room> getRoomObservableList() {
         return rooms.getRoomObservableList();
-    }
-
-    private void addRooms() {
-        //rooms.
     }
 
     /**
@@ -188,26 +151,6 @@ public class RoomList implements ReadOnlyRoomList {
                 || (other instanceof RoomList // instanceof handles nulls
                 && rooms.equals(((RoomList) other).rooms));
     }
-
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        RoomList roomList = (RoomList) o;
-        Room[] roomsForPQ = this.rooms.toArray(new Room[0]);
-        Room[] rooms1ForPQ = roomList.rooms.toArray(new Room[0]);
-
-        Room[] roomsForObservableList = internalList.toArray(new Room[0]);
-        Room[] rooms1FOrObservableList = roomList.internalList.toArray(new Room[0]);
-        return numOfRooms == roomList.numOfRooms
-                && Arrays.equals(roomsForPQ, rooms1ForPQ)
-                && Arrays.equals(roomsForObservableList, rooms1FOrObservableList);
-    }*/
 
     /**
      * Tests whether 2 PriorityQueues are equal by checking whether at each relative position they contain the equal

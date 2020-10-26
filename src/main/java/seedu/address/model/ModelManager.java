@@ -171,6 +171,16 @@ public class ModelManager implements Model {
 
     //=========== Room List ========================================================================================
 
+
+    @Override
+    public int numOfOccupiedRooms() {
+        return roomList.numOfOccupiedRooms();
+    }
+
+    @Override
+    public boolean canFit() {
+        return roomList.canFit();
+    }
     @Override
     public int getNumOfRooms() {
         return roomList.getNumOfRooms();
