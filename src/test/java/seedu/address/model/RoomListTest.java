@@ -1,8 +1,11 @@
 package seedu.address.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalRooms.ROOM7_PATIENT_ALICE_NO_TASK;
 
+import java.util.Collections;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -10,6 +13,23 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.room.Room;
 
 class RoomListTest {
+
+    private final RoomList roomList = new RoomList();
+
+    @Test
+    public void constructor() {
+        assertEquals(Collections.emptyList(), roomList.getRoomObservableList());
+    }
+
+    @Test
+    public void resetData_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> roomList.resetData(null));
+    }
+
+    @Test
+    public void numOfRoom_emptyRoomList() {
+        assertEquals(0, roomList.getNumOfRooms());
+    }
 
     @Test
     public void getRoomWithRoomNumber_roomNotInList_returnsEmptyOptional() {

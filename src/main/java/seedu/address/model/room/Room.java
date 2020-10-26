@@ -1,14 +1,16 @@
 package seedu.address.model.room;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import java.util.List;
 import java.util.Objects;
-
 import java.util.Optional;
+
 import seedu.address.model.patient.Patient;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskList;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 /**
  * Represents Room in the app
  */
@@ -70,7 +72,7 @@ public class Room {
     }
 
     public Patient getPatient() {
-        if(patient.isEmpty()) {
+        if (patient.isEmpty()) {
             return null;
         } else {
             return patient.get();
@@ -100,6 +102,15 @@ public class Room {
      */
     public void addTask(Task task) {
         taskList.add(task);
+    }
+
+    /**
+     * Adds tasks of TaskList to the task list of this room.
+     *
+     * @param tasks The task to add.
+     */
+    public void addTask(TaskList tasks) {
+        this.taskList.add(tasks);
     }
 
     /**
@@ -174,6 +185,10 @@ public class Room {
                     && isOccupied == room.isOccupied
                     && patient.equals(room.getPatient());
         } else if (patient.isEmpty()) {
+            System.out.println(roomNumber == room.roomNumber
+                    && room.patient.isEmpty()
+                    && isOccupied == room.isOccupied
+                    && taskList.equals(room.getTaskList()));
             return roomNumber == room.roomNumber
                     && room.patient.isEmpty()
                     && isOccupied == room.isOccupied
@@ -191,9 +206,7 @@ public class Room {
         return Objects.hash(roomNumber, isOccupied, taskList);
     }
 
-    public void addTask(TaskList tasks) {
-        this.taskList.add(tasks);
-    }
+
     @Override
     public String toString() {
         String patientDetails = getPatient() == null ? "-" : getPatient().toString();

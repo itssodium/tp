@@ -44,7 +44,8 @@ public class TaskListTest {
 
     @Test
     public void add_nullTask_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> taskList.add(null));
+        Task task = null;
+        assertThrows(NullPointerException.class, () -> taskList.add(task));
     }
 
     @Test

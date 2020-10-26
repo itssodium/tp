@@ -11,7 +11,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyRoomList;
-import seedu.address.model.RoomList;
 import seedu.address.model.room.Room;
 
 /**

@@ -1,27 +1,18 @@
 package seedu.address.model;
 
-import static java.util.Objects.checkFromIndexSize;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.PriorityQueue;
-import java.util.function.Supplier;
 import java.util.logging.Logger;
 
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.patient.Name;
-import seedu.address.model.patient.UniquePatientList;
 import seedu.address.model.room.Room;
-import seedu.address.model.room.exceptions.DuplicateRoomException;
 import seedu.address.model.room.exceptions.RoomNotFoundException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.exceptions.TaskNotFoundException;

@@ -62,6 +62,9 @@ public class TaskList implements Iterable<Task>, ReadOnlyTaskList {
         internalList.add(toAdd);
     }
 
+    /**
+     * Adds all tasks in TaskList to the list.
+     */
     public void add(TaskList tasks) {
         requireAllNonNull(tasks);
         internalList.addAll(tasks.internalList);
