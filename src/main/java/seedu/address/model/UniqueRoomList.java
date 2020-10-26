@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -301,5 +302,14 @@ public class UniqueRoomList implements Iterable<Room> {
 
     public void setRooms(PriorityQueue<Room> rooms) {
         this.rooms = rooms;
+    }
+
+    public Optional<Room> getRoomWithRoomNumber(int roomNumber) {
+        for (Room room : internalList) {
+            if (roomNumber == room.getRoomNumber()) {
+                return Optional.of(room);
+            }
+        }
+        return Optional.empty();
     }
 }

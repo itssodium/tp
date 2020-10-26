@@ -145,6 +145,7 @@ public interface Model {
      */
     void setSingleRoom(Room target, Room editedRoom);
 
+    Optional<Room> getRoomWithRoomNumber(int roomNumber);
     /**
      * Clears the room with the given patient name {@code patientName}.
      *
@@ -254,4 +255,6 @@ public interface Model {
      * @param editedTask the edited task.
      */
     void setTask(Task taskToEdit, Task editedTask);
+
+    ReadOnlyTaskList getModifiableTaskList();
 }

@@ -242,6 +242,14 @@ public class ModelManager implements Model {
         }
     }
 
+    @Override
+    public Optional<Room> getRoomWithRoomNumber(int roomNumber) {
+        assert (roomNumber > 0) : "Room number should be greater than 0.";
+        return roomList.getRoomWithRoomNumber(roomNumber);
+    }
+
+    //@@author chiamyunqing
+
     //=========== Filtered RoomList Accessors ==========================================================================
 
     @Override
@@ -310,6 +318,11 @@ public class ModelManager implements Model {
     public void setTask(Task taskToEdit, Task editedTask) {
         requireAllNonNull(taskToEdit, editedTask);
         taskList.setTask(taskToEdit, editedTask);
+    }
+
+    @Override
+    public ReadOnlyTaskList getModifiableTaskList() {
+        return taskList;
     }
 
     @Override

@@ -210,4 +210,7 @@ public class RoomList implements ReadOnlyRoomList {
         this.rooms.setRooms(rooms);
     }
 
+    public Optional<Room> getRoomWithRoomNumber(int roomNumber) {
+        return rooms.getRoomWithRoomNumber(roomNumber);
+    }
 }
