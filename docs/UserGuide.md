@@ -478,7 +478,7 @@ Field | Description
 <p align="center">
     <img src="images/ug/initroomcommand.png" width="380" height="200">
     <br />
-   <i>Figure ??. Navigation to Rooms tab</i>
+   <i>Figure ??. <code>initroom</code> command in Command Box</i>
 </p>
 3. Press `enter` to run the command
 4. The result box shows a success message "Initialise the number of rooms to 400 rooms in the application.".
@@ -643,7 +643,7 @@ Format: `listroom` All the rooms in Covigent.
 <p align="center">
     <img src="images/ug/listroomcommand.png" width="550" height="200">
     <br />
-    <i>Figure 12. A Successful Execution of <code>listroom</code></i>
+    <i>Figure ?? <code>listroom</code> command in Command Box</i>
 </p>
 3. Press `enter` to run the command
 4. The result box shows a success message "All rooms are listed."
@@ -677,7 +677,7 @@ Format: `findemptyroom` The unoccupied room in Covigent with the lowest room num
 <p align="center">
     <img src="images/ug/findemptyroomcommand.png" width="550" height="200">
     <br />
-    <i>Figure ??. A Successful Execution of <code>listroom</code></i>
+    <i>Figure ??. <code>allocateroom</code> command in Command Box</i>
 </p>
 3. Press `enter` to run the command
 4. The result box shows a success message that "Room Number 4 is empty"
